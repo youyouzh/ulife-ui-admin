@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { store } from '../index'
+import { store } from '@/store'
 import { DictDataVO } from '@/api/system/dict/types'
 import { CACHE_KEY, useCache } from '@/hooks/web/useCache'
 const { wsCache } = useCache('sessionStorage')
