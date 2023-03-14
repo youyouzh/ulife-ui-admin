@@ -1,4 +1,4 @@
-import { store } from '../index'
+import { store } from '@/store'
 import { defineStore } from 'pinia'
 import { getAccessToken, removeToken } from '@/utils/auth'
 import { CACHE_KEY, useCache } from '@/hooks/web/useCache'

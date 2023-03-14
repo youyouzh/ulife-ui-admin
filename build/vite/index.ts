@@ -6,6 +6,7 @@ import progress from 'vite-plugin-progress'
 import EslintPlugin from 'vite-plugin-eslint'
 import PurgeIcons from 'vite-plugin-purge-icons'
 import { ViteEjsPlugin } from 'vite-plugin-ejs'
+import { viteMockServe } from 'vite-plugin-mock'
 import ElementPlus from 'unplugin-element-plus/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -15,12 +16,14 @@ import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
-export function createVitePlugins(VITE_APP_TITLE: string) {
+export function createVitePlugins(VITE_APP_TITLE: string, isBuild: boolean) {
   const root = process.cwd()
+
   // 路径查找
   function pathResolve(dir: string) {
     return resolve(root, '.', dir)
   }
+
   return [
     Vue(),
     VueJsx(),
@@ -94,6 +97,18 @@ export function createVitePlugins(VITE_APP_TITLE: string) {
     }),
     ViteEjsPlugin({
       title: VITE_APP_TITLE
-    })
+    }),
+    viteMockServe({
+      ignore: /^\_/,
+      logger: !isBuild,
+      watchFiles: true,
+      mockPath: '/mock',
+      localEnabled: !isBuild,
+      prodEnabled: isBuild,
+      injectCode: `
+          import { setupProdMockServer } from '/mock/_createProductionServer'
+          setupProdMockServer()
+          `
+    }),
   ]
 }

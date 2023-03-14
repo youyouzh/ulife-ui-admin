@@ -1,8 +1,8 @@
 import { resolve } from 'path'
+import type { ConfigEnv, UserConfig } from 'vite'
 import { loadEnv } from 'vite'
-import type { UserConfig, ConfigEnv } from 'vite'
 import { createVitePlugins } from './build/vite'
-import { include, exclude } from "./build/vite/optimize"
+import { exclude, include } from "./build/vite/optimize"
 // 当前执行node命令时文件夹的地址(工作目录)
 const root = process.cwd()
 
@@ -42,7 +42,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       // },
     },
     // 项目使用的vite插件。 单独提取到build/vite/plugin中管理
-    plugins: createVitePlugins(env.VITE_APP_TITLE),
+    plugins: createVitePlugins(env.VITE_APP_TITLE, isBuild),
     css: {
       preprocessorOptions: {
         scss: {

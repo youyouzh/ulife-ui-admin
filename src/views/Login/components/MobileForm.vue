@@ -100,7 +100,7 @@ import { setTenantId, setToken } from '@/utils/auth'
 import { usePermissionStore } from '@/store/modules/permission'
 import { getTenantIdByNameApi, sendSmsCodeApi, smsLoginApi } from '@/api/login'
 import LoginFormTitle from './LoginFormTitle.vue'
-import { useLoginState, LoginStateEnum, useFormValid } from './useLogin'
+import { LoginStateEnum, useFormValid, useLoginState } from './useLogin'
 
 const { t } = useI18n()
 const message = useMessage()
@@ -129,7 +129,7 @@ const loginData = reactive({
   },
   loginForm: {
     uuid: '',
-    tenantName: '芋道源码',
+    tenantName: 'uusama',
     mobileNumber: '',
     code: ''
   }

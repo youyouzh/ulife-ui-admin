@@ -1,15 +1,14 @@
 {
   "name": "ulife-ui-admin",
   "version": "1.0.0",
-  "description": "一套基于vue3、element-plus、typesScript、vite4、vue-element-plus-admin的后台集成方案。",
+  "description": "一套基于vue3、element-plus、typesScript、vite4、vue-element-plus-admin-1.9.4, yudao-ui-admin-vue3-1.7.1的后台集成方案。",
   "author": "uusama",
   "private": false,
   "scripts": {
     "i": "pnpm install",
     "dev": "vite --mode base",
-    "front": "vite --mode front",
     "ts:check": "vue-tsc --noEmit",
-    "build:pro": "node --max_old_space_size=8000 ./node_modules/vite/bin/vite.js build --mode pro",
+    "build:pro": "node --max_old_space_size=8000 ./node_modules/vite/bin/vite.js build --mode prod",
     "build:dev": "node --max_old_space_size=8000 ./node_modules/vite/bin/vite.js build --mode dev",
     "build:test": "node --max_old_space_size=8000 ./node_modules/vite/bin/vite.js build --mode test",
     "build:static": "node --max_old_space_size=8000 ./node_modules/vite/bin/vite.js build --mode static",
@@ -23,7 +22,9 @@
     "lint:format": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
     "lint:style": "stylelint --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
     "lint:lint-staged": "lint-staged -c ",
-    "lint:pretty": "pretty-quick --staged"
+    "p": "plop",
+    "lint:pretty": "pretty-quick --staged",
+    "analysis": "windicss-analysis"
   },
   "dependencies": {
     "@form-create/designer": "^3.1.0",
@@ -51,6 +52,7 @@
     "lodash-es": "^4.17.21",
     "min-dash": "^4.0.0",
     "mitt": "^3.0.0",
+    "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.33",
     "qrcode": "^1.5.1",
@@ -94,6 +96,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-vue": "^9.9.0",
     "lint-staged": "^13.1.2",
+    "plop": "^3.1.2",
     "postcss": "^8.4.21",
     "postcss-html": "^1.5.0",
     "postcss-scss": "^4.0.6",
@@ -116,16 +119,18 @@
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-ejs": "^1.6.4",
     "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-mock": "^2.9.6",
     "vite-plugin-progress": "^0.0.6",
     "vite-plugin-purge-icons": "^0.9.2",
     "vite-plugin-svg-icons": "^2.0.1",
     "vite-plugin-vue-setup-extend": "^0.4.0",
     "vite-plugin-windicss": "^1.8.10",
     "vue-tsc": "^1.2.0",
-    "windicss": "^3.5.6"
+    "windicss": "^3.5.6",
+    "windicss-analysis": "^0.3.5"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">= 14.18.0"
   },
   "license": "MIT",
   "repository": {
