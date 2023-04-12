@@ -32,14 +32,14 @@
       "vite-plugin-svg-icons/client",
       "@form-create/element-ui/types"
     ],
+    "outDir": "target", // 请保留这个属性，防止tsconfig.json文件报错
     "typeRoots": ["./node_modules/@types/", "./types"]
   },
   "include": [
     "src/**/*",
     "types/**/*.d.ts",
-    "mock/**/*.ts",
     "src/types/auto-imports.d.ts",
     "src/types/auto-components.d.ts"
   ],
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["dist", "target", "node_modules"]
 }

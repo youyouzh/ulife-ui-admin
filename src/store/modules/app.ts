@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { store } from '@/store'
+import { store } from '../index'
 import { setCssVar, humpToUnderline } from '@/utils'
 import { ElMessage } from 'element-plus'
 import { CACHE_KEY, useCache } from '@/hooks/web/useCache'

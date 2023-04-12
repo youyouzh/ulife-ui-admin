@@ -34,7 +34,7 @@ export default defineComponent({
         return null
       }
       // 解决自定义字典标签值为零时标签不渲染的问题
-      if (!props.value && props.value !== 0) {
+      if (props.value === undefined || props.value === null) {
         return null
       }
       getDictObj(props.type, props.value.toString())
@@ -48,6 +48,7 @@ export default defineComponent({
               ? dictData.value?.cssClass
               : ''
           }
+          disableTransitions={true}
         >
           {dictData.value?.label}
         </ElTag>

@@ -8,7 +8,6 @@ const config: {
    * api请求基础路径
    */
   base_url: import.meta.env.VITE_BASE_URL + import.meta.env.VITE_API_URL,
-  // base_url: import.meta.env.VITE_API_URL,
   /**
    * 接口成功返回状态码
    */

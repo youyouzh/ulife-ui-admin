@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia'
-import { store } from '@/store'
+import { store } from '../index'
+// @ts-ignore
 import { DictDataVO } from '@/api/system/dict/types'
 import { CACHE_KEY, useCache } from '@/hooks/web/useCache'
 const { wsCache } = useCache('sessionStorage')
-import { listSimpleDictDataApi } from '@/api/system/dict/dict.data'
+import { listSimpleDictData } from '@/api/system/dict/dict.data'
 
 export interface DictValueType {
   value: any
@@ -44,7 +45,7 @@ export const useDictStore = defineStore('dict', {
         this.dictMap = dictMap
         this.isSetDict = true
       } else {
-        const res = await listSimpleDictDataApi()
+        const res = await listSimpleDictData()
         // 设置数据
         const dictDataMap = new Map<string, any>()
         res.forEach((dictData: DictDataVO) => {
@@ -74,7 +75,7 @@ export const useDictStore = defineStore('dict', {
     },
     async resetDict() {
       wsCache.delete(CACHE_KEY.DICT_CACHE)
-      const res = await listSimpleDictDataApi()
+      const res = await listSimpleDictData()
       // 设置数据
       const dictDataMap = new Map<string, any>()
       res.forEach((dictData: DictDataVO) => {

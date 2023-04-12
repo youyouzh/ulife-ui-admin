@@ -6,24 +6,23 @@ import progress from 'vite-plugin-progress'
 import EslintPlugin from 'vite-plugin-eslint'
 import PurgeIcons from 'vite-plugin-purge-icons'
 import { ViteEjsPlugin } from 'vite-plugin-ejs'
-import { viteMockServe } from 'vite-plugin-mock'
+// @ts-ignore
 import ElementPlus from 'unplugin-element-plus/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import viteCompression from 'vite-plugin-compression'
+import topLevelAwait from 'vite-plugin-top-level-await'
 import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
-export function createVitePlugins(VITE_APP_TITLE: string, isBuild: boolean) {
+export function createVitePlugins() {
   const root = process.cwd()
-
   // 路径查找
   function pathResolve(dir: string) {
     return resolve(root, '.', dir)
   }
-
   return [
     Vue(),
     VueJsx(),
@@ -42,11 +41,14 @@ export function createVitePlugins(VITE_APP_TITLE: string, isBuild: boolean) {
       imports: [
         'vue',
         'vue-router',
+        // 可额外添加需要 autoImport 的组件
         {
           '@/hooks/web/useI18n': ['useI18n'],
-          '@/hooks/web/useXTable': ['useXTable'],
           '@/hooks/web/useMessage': ['useMessage'],
+          '@/hooks/web/useXTable': ['useXTable'],
           '@/hooks/web/useVxeCrudSchemas': ['useVxeCrudSchemas'],
+          '@/hooks/web/useTable': ['useTable'],
+          '@/hooks/web/useCrudSchemas': ['useCrudSchemas'],
           '@/utils/formRules': ['required'],
           '@/utils/dict': ['DICT_TYPE']
         }
@@ -95,20 +97,12 @@ export function createVitePlugins(VITE_APP_TITLE: string, isBuild: boolean) {
       ext: '.gz', // 生成的压缩包后缀
       deleteOriginFile: false //压缩后是否删除源文件
     }),
-    ViteEjsPlugin({
-      title: VITE_APP_TITLE
-    }),
-    viteMockServe({
-      ignore: /^\_/,
-      logger: !isBuild,
-      watchFiles: true,
-      mockPath: '/mock',
-      localEnabled: !isBuild,
-      prodEnabled: isBuild,
-      injectCode: `
-          import { setupProdMockServer } from '/mock/_createProductionServer'
-          setupProdMockServer()
-          `
-    }),
+    ViteEjsPlugin(),
+    topLevelAwait({ // https://juejin.cn/post/7152191742513512485
+      // The export name of top-level await promise for each chunk module
+      promiseExportName: '__tla',
+      // The function to generate import names of top-level await promise in each chunk module
+      promiseImportName: (i) => `__tla_${i}`
+    })
   ]
 }

@@ -1,3 +1,5 @@
+import dayjs from 'dayjs'
+
 /**
  * 时间日期转换
  * @param date 当前时间，new Date() 格式
@@ -9,58 +11,16 @@
  * @description format 季度 + 星期 + 几周："YYYY-mm-dd HH:MM:SS WWW QQQQ ZZZ"
  * @returns 返回拼接后的时间字符串
  */
-export function formatDate(date: Date, format: string): string {
-  const we = date.getDay() // 星期
-  const z = getWeek(date) // 周
-  const qut = Math.floor((date.getMonth() + 3) / 3).toString() // 季度
-  const opt: { [key: string]: string } = {
-    'Y+': date.getFullYear().toString(), // 年
-    'm+': (date.getMonth() + 1).toString(), // 月(月份从0开始，要+1)
-    'd+': date.getDate().toString(), // 日
-    'H+': date.getHours().toString(), // 时
-    'M+': date.getMinutes().toString(), // 分
-    'S+': date.getSeconds().toString(), // 秒
-    'q+': qut // 季度
+export function formatDate(date: Date, format?: string): string {
+  // 日期不存在，则返回空
+  if (!date) {
+    return ''
   }
-  // 中文数字 (星期)
-  const week: { [key: string]: string } = {
-    '0': '日',
-    '1': '一',
-    '2': '二',
-    '3': '三',
-    '4': '四',
-    '5': '五',
-    '6': '六'
+  // 日期存在，则进行格式化
+  if (format === undefined) {
+    format = 'YYYY-MM-DD HH:mm:ss'
   }
-  // 中文数字（季度）
-  const quarter: { [key: string]: string } = {
-    '1': '一',
-    '2': '二',
-    '3': '三',
-    '4': '四'
-  }
-  if (/(W+)/.test(format))
-    format = format.replace(
-      RegExp.$1,
-      RegExp.$1.length > 1 ? (RegExp.$1.length > 2 ? '星期' + week[we] : '周' + week[we]) : week[we]
-    )
-  if (/(Q+)/.test(format))
-    format = format.replace(
-      RegExp.$1,
-      RegExp.$1.length == 4 ? '第' + quarter[qut] + '季度' : quarter[qut]
-    )
-  if (/(Z+)/.test(format))
-    format = format.replace(RegExp.$1, RegExp.$1.length == 3 ? '第' + z + '周' : z + '')
-  for (const k in opt) {
-    const r = new RegExp('(' + k + ')').exec(format)
-    // 若输入的长度不为1，则前面补零
-    if (r)
-      format = format.replace(
-        r[1],
-        RegExp.$1.length == 1 ? opt[k] : opt[k].padStart(RegExp.$1.length, '0')
-      )
-  }
-  return format
+  return dayjs(date).format(format)
 }
 
 /**
@@ -80,8 +40,7 @@ export function getWeek(dateTime: Date): number {
   if (dayOfWeek != 0) spendDay = 7 - dayOfWeek + 1
   firstDay = new Date(temptTime.getFullYear(), 0, 1 + spendDay)
   const d = Math.ceil((temptTime.valueOf() - firstDay.valueOf()) / 86400000)
-  const result = Math.ceil(d / 7)
-  return result
+  return Math.ceil(d / 7)
 }
 
 /**
@@ -173,4 +132,70 @@ export function formatPast2(ms) {
   } else {
     return 0 + '秒'
   }
+}
+
+/**
+ * element plus 的时间 Formatter 实现，使用 YYYY-MM-DD HH:mm:ss 格式
+ *
+ * @param row 行数据
+ * @param column 字段
+ * @param cellValue 字段值
+ */
+// @ts-ignore
+export const dateFormatter = (row, column, cellValue) => {
+  if (!cellValue) {
+    return
+  }
+  return formatDate(cellValue)
+}
+
+/**
+ * 设置起始日期，时间为00:00:00
+ * @param param 传入日期
+ * @returns 带时间00:00:00的日期
+ */
+export function beginOfDay(param: Date) {
+  return new Date(param.getFullYear(), param.getMonth(), param.getDate(), 0, 0, 0, 0)
+}
+
+/**
+ * 设置结束日期，时间为23:59:59
+ * @param param 传入日期
+ * @returns 带时间23:59:59的日期
+ */
+export function endOfDay(param: Date) {
+  return new Date(param.getFullYear(), param.getMonth(), param.getDate(), 23, 59, 59, 999)
+}
+
+/**
+ * 计算两个日期间隔天数
+ * @param param1 日期1
+ * @param param2 日期2
+ */
+export function betweenDay(param1: Date, param2: Date) {
+  param1 = convertDate(param1)
+  param2 = convertDate(param2)
+  // 计算差值
+  return Math.floor((param2.getTime() - param1.getTime()) / (24 * 3600 * 1000))
+}
+
+/**
+ * 日期计算
+ * @param param1 日期
+ * @param param2 添加的时间
+ */
+export function addTime(param1: Date, param2: number) {
+  param1 = convertDate(param1)
+  return new Date(param1.getTime() + param2)
+}
+
+/**
+ * 日期转换
+ * @param param 日期
+ */
+export function convertDate(param: Date | string) {
+  if (typeof param === 'string') {
+    return new Date(param)
+  }
+  return param
 }

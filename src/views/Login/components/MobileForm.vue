@@ -98,9 +98,9 @@ import { useIcon } from '@/hooks/web/useIcon'
 
 import { setTenantId, setToken } from '@/utils/auth'
 import { usePermissionStore } from '@/store/modules/permission'
-import { getTenantIdByNameApi, sendSmsCodeApi, smsLoginApi } from '@/api/login'
+import { getTenantIdByName, sendSmsCode, smsLogin } from '@/api/login'
 import LoginFormTitle from './LoginFormTitle.vue'
-import { LoginStateEnum, useFormValid, useLoginState } from './useLogin'
+import { useLoginState, LoginStateEnum, useFormValid } from './useLogin'
 
 const { t } = useI18n()
 const message = useMessage()
@@ -129,7 +129,7 @@ const loginData = reactive({
   },
   loginForm: {
     uuid: '',
-    tenantName: 'uusama',
+    tenantName: '芋道源码',
     mobileNumber: '',
     code: ''
   }
@@ -149,7 +149,7 @@ const redirect = ref<string>('')
 const getSmsCode = async () => {
   await getTenantId()
   smsVO.smsCode.mobile = loginData.loginForm.mobileNumber
-  await sendSmsCodeApi(smsVO.smsCode).then(async () => {
+  await sendSmsCode(smsVO.smsCode).then(async () => {
     message.success(t('login.SmsSendMsg'))
     // 设置倒计时
     mobileCodeTimer.value = 60
@@ -173,7 +173,7 @@ watch(
 // 获取租户 ID
 const getTenantId = async () => {
   if (loginData.tenantEnable === 'true') {
-    const res = await getTenantIdByNameApi(loginData.loginForm.tenantName)
+    const res = await getTenantIdByName(loginData.loginForm.tenantName)
     setTenantId(res)
   }
 }
@@ -185,7 +185,7 @@ const signIn = async () => {
   loginLoading.value = true
   smsVO.loginSms.mobile = loginData.loginForm.mobileNumber
   smsVO.loginSms.code = loginData.loginForm.code
-  await smsLoginApi(smsVO.loginSms)
+  await smsLogin(smsVO.loginSms)
     .then(async (res) => {
       setToken(res?.token)
       if (!redirect.value) {
