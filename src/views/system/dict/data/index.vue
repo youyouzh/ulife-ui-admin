@@ -115,7 +115,7 @@
   <!-- 表单弹窗：添加/修改 -->
   <DictDataForm ref="formRef" @success="getList" />
 </template>
-<script setup lang="ts" name="DictData">
+<script setup lang="ts" name="SystemDictData">
 import { getIntDictOptions, DICT_TYPE } from '@/utils/dict'
 import { dateFormatter } from '@/utils/formatTime'
 import download from '@/utils/download'
@@ -167,7 +167,7 @@ const resetQuery = () => {
 /** 添加/修改操作 */
 const formRef = ref()
 const openForm = (type: string, id?: number) => {
-  formRef.value.open(type, id)
+  formRef.value.open(type, id, queryParams.dictType)
 }
 
 /** 删除按钮操作 */

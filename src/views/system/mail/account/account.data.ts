@@ -19,7 +19,7 @@ export const rules = reactive({
   sslEnable: [required]
 })
 
-// CrudSchema：https://kailong110120130.gitee.io/vue-element-plus-admin-doc/hooks/useCrudSchemas.html
+// CrudSchema：https://doc.iocoder.cn/vue3/crud-schema/
 const crudSchemas = reactive<CrudSchema[]>([
   {
     label: '邮箱',
@@ -61,12 +61,16 @@ const crudSchemas = reactive<CrudSchema[]>([
     label: '创建时间',
     field: 'createTime',
     isForm: false,
-    formatter: dateFormatter
+    formatter: dateFormatter,
+    detail: {
+      dateFormat: 'YYYY-MM-DD HH:mm:ss'
+    }
   },
   {
     label: '操作',
     field: 'action',
-    isForm: false
+    isForm: false,
+    isDetail: false
   }
 ])
 export const { allSchemas } = useCrudSchemas(crudSchemas)

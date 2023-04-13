@@ -16,9 +16,6 @@ import { setupGlobCom } from '@/components'
 // 引入 element-plus
 import { setupElementPlus } from '@/plugins/elementPlus'
 
-// 引入 vxe-table
-import { setupVxeTable } from '@/plugins/vxeTable'
-
 // 引入 form-create
 import { setupFormCreate } from '@/plugins/formCreate'
 
@@ -52,6 +49,8 @@ import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'
 import hljs from 'highlight.js' //导入代码高亮文件
 import 'highlight.js/styles/github.css' //导入代码高亮样式  新版
 
+import '@/plugins/tongji' // 百度统计
+
 import Logger from '@/utils/Logger'
 
 // 本地开发模式 全局引入 element-plus 样式，加快第一次进入速度
@@ -80,8 +79,6 @@ const setupAll = async () => {
   setupGlobCom(app)
 
   setupElementPlus(app)
-
-  setupVxeTable(app)
 
   setupFormCreate(app)
 

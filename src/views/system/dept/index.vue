@@ -19,7 +19,7 @@
       <el-form-item label="部门状态" prop="status">
         <el-select
           v-model="queryParams.status"
-          placeholder="请选择不么你状态"
+          placeholder="请选择部门状态"
           clearable
           class="!w-240px"
         >
@@ -103,7 +103,7 @@
   <!-- 表单弹窗：添加/修改 -->
   <DeptForm ref="formRef" @success="getList" />
 </template>
-<script setup lang="ts" name="Dept">
+<script setup lang="ts" name="SystemDept">
 import { DICT_TYPE, getIntDictOptions } from '@/utils/dict'
 import { dateFormatter } from '@/utils/formatTime'
 import { handleTree } from '@/utils/tree'
