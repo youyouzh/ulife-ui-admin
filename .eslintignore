@@ -6,3 +6,6 @@
 /node_modules/*
 /dist*
 /src/main.ts
+
+# 忽略api，临时mock使用
+/src/api/

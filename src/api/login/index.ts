@@ -39,7 +39,80 @@ export const getInfo = () => {
 
 // 路由
 export const getAsyncRoutes = () => {
-  return request.get({ url: '/system/auth/list-menus' })
+  return [{
+    "id": 1,
+    "parentId": 0,
+    "name": "系统管理",
+    "path": "/system",
+    "component": null,
+    "componentName": null,
+    "icon": "ep:tools",
+    "visible": true,
+    "keepAlive": true,
+    "alwaysShow": true,
+    "children": [{
+      "id": 100,
+      "parentId": 1,
+      "name": "用户管理",
+      "path": "user",
+      "component": "system/user/index",
+      "componentName": null,
+      "icon": "ep:avatar",
+      "visible": true,
+      "keepAlive": true,
+      "alwaysShow": true,
+      "children": null
+    }, {
+      "id": 101,
+      "parentId": 1,
+      "name": "角色管理",
+      "path": "role",
+      "component": "system/role/index",
+      "componentName": null,
+      "icon": "ep:user-filled",
+      "visible": true,
+      "keepAlive": true,
+      "alwaysShow": true,
+      "children": null
+    }, {
+      "id": 102,
+      "parentId": 1,
+      "name": "菜单管理",
+      "path": "menu",
+      "component": "system/menu/index",
+      "componentName": null,
+      "icon": "ep:grid",
+      "visible": true,
+      "keepAlive": true,
+      "alwaysShow": true,
+      "children": null
+    }, {
+      "id": 105,
+      "parentId": 1,
+      "name": "字典管理",
+      "path": "dict",
+      "component": "system/dict/index",
+      "componentName": null,
+      "icon": "ep:list",
+      "visible": true,
+      "keepAlive": true,
+      "alwaysShow": true,
+      "children": null
+    }, {
+      "id": 107,
+      "parentId": 1,
+      "name": "通知公告",
+      "path": "notice",
+      "component": "system/notice/index",
+      "componentName": null,
+      "icon": "ep:bell-filled",
+      "visible": true,
+      "keepAlive": true,
+      "alwaysShow": true,
+      "children": null
+    }]
+  }];
+  // return request.get({ url: '/system/auth/list-menus' })
 }
 
 //获取登录验证码

@@ -62,15 +62,11 @@ const setupAll = async () => {
 
   await setupI18n(app)
 
-  MyPD(app)
-
   setupStore(app)
 
   setupGlobCom(app)
 
   setupElementPlus(app)
-
-  setupFormCreate(app)
 
   setupRouter(app)
 
