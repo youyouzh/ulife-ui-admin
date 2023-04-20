@@ -10,10 +10,10 @@
       <el-form-item label="敏感词" prop="name">
         <el-input v-model="formData.name" placeholder="请输入敏感词" />
       </el-form-item>
-      <el-form-item label="状态" prop="status">
-        <el-radio-group v-model="formData.status">
+      <el-form-item label="状态" prop="state">
+        <el-radio-group v-model="formData.state">
           <el-radio
-            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATE)"
             :key="dict.value"
             :label="dict.value"
           >
@@ -57,7 +57,7 @@ const formType = ref('') // 表单的类型：create - 新增；update - 修改
 const formData = ref({
   id: undefined,
   name: '',
-  status: CommonStatusEnum.ENABLE,
+  state: CommonStatusEnum.ENABLE,
   description: '',
   tags: []
 })
@@ -119,7 +119,7 @@ const resetForm = () => {
   formData.value = {
     id: undefined,
     name: '',
-    status: CommonStatusEnum.ENABLE,
+    state: CommonStatusEnum.ENABLE,
     description: '',
     tags: []
   }

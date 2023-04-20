@@ -21,7 +21,7 @@ export interface RedisInfoVO {
   current_cow_size_age: string
   redis_build_id: string
   errorstat_BUSYGROUP: string
-  aof_last_bgrewrite_status: string
+  aof_last_bgrewrite_state: string
   multiplexing_api: string
   client_recent_max_output_buffer: string
   allocator_resident: string
@@ -108,13 +108,13 @@ export interface RedisInfoVO {
   master_repl_offset: string
   used_memory_dataset: string
   used_cpu_user: string
-  rdb_last_bgsave_status: string
+  rdb_last_bgsave_state: string
   tracking_total_keys: string
   atomicvar_api: string
   allocator_rss_ratio: string
   client_recent_max_input_buffer: string
   clients_in_timeout_table: string
-  aof_last_write_status: string
+  aof_last_write_state: string
   mem_allocator: string
   used_memory_scripts: string
   used_memory_peak: string

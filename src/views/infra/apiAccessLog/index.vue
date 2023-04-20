@@ -109,7 +109,7 @@
       <el-table-column label="执行时长" align="center" prop="duration" width="180">
         <template #default="scope"> {{ scope.row.duration }} ms </template>
       </el-table-column>
-      <el-table-column label="操作结果" align="center" prop="status">
+      <el-table-column label="操作结果" align="center" prop="state">
         <template #default="scope">
           {{ scope.row.resultCode === 0 ? '成功' : '失败(' + scope.row.resultMsg + ')' }}
         </template>

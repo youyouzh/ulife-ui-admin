@@ -93,7 +93,7 @@
         </template>
       </el-table-column>
       <el-table-column label="操作人" align="center" prop="userNickname" />
-      <el-table-column label="操作结果" align="center" prop="status">
+      <el-table-column label="操作结果" align="center" prop="state">
         <template #default="scope">
           <span>{{ scope.row.resultCode === 0 ? '成功' : '失败' }}</span>
         </template>

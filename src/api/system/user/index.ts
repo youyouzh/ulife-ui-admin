@@ -11,7 +11,7 @@ export interface UserVO {
   sex: number
   avatar: string
   loginIp: string
-  status: number
+  state: number
   remark: string
   loginDate: Date
   createTime: Date
@@ -62,12 +62,12 @@ export const resetUserPwd = (id: number, password: string) => {
 }
 
 // 用户状态修改
-export const updateUserStatus = (id: number, status: number) => {
+export const updateUserStatus = (id: number, state: number) => {
   const data = {
     id,
-    status
+    state
   }
-  return request.put({ url: '/system/user/update-status', data: data })
+  return request.put({ url: '/system/user/update-state', data: data })
 }
 
 // 获取用户精简信息列表

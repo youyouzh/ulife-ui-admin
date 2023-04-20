@@ -23,10 +23,10 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item label="状态" prop="status">
-        <el-select v-model="formData.status" placeholder="请选择状态" clearable>
+      <el-form-item label="状态" prop="state">
+        <el-select v-model="formData.state" placeholder="请选择状态" clearable>
           <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATE)"
             :key="parseInt(dict.value)"
             :label="dict.label"
             :value="parseInt(dict.value)"
@@ -59,13 +59,13 @@ const formData = ref({
   title: '',
   type: undefined,
   content: '',
-  status: CommonStatusEnum.ENABLE,
+  state: CommonStatusEnum.ENABLE,
   remark: ''
 })
 const formRules = reactive({
   title: [{ required: true, message: '公告标题不能为空', trigger: 'blur' }],
   type: [{ required: true, message: '公告类型不能为空', trigger: 'change' }],
-  status: [{ required: true, message: '状态不能为空', trigger: 'change' }],
+  state: [{ required: true, message: '状态不能为空', trigger: 'change' }],
   content: [{ required: true, message: '公告内容不能为空', trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
@@ -121,7 +121,7 @@ const resetForm = () => {
     title: '',
     type: undefined,
     content: '',
-    status: CommonStatusEnum.ENABLE,
+    state: CommonStatusEnum.ENABLE,
     remark: ''
   }
   formRef.value?.resetFields()

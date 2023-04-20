@@ -9,7 +9,7 @@ export interface MailTemplateVO {
   title: string
   content: string
   params: string
-  status: number
+  state: number
   remark: string
 }
 

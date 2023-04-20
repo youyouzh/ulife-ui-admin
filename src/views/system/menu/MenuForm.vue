@@ -61,10 +61,10 @@
       <el-form-item label="显示排序" prop="sort">
         <el-input-number v-model="formData.sort" controls-position="right" :min="0" clearable />
       </el-form-item>
-      <el-form-item label="菜单状态" prop="status">
-        <el-radio-group v-model="formData.status">
+      <el-form-item label="菜单状态" prop="state">
+        <el-radio-group v-model="formData.state">
           <el-radio
-            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATE)"
             :key="dict.label"
             :label="dict.value"
           >
@@ -137,7 +137,7 @@ const formData = ref({
   icon: '',
   component: '',
   componentName: '',
-  status: CommonStatusEnum.ENABLE,
+  state: CommonStatusEnum.ENABLE,
   visible: true,
   keepAlive: true,
   alwaysShow: true
@@ -146,7 +146,7 @@ const formRules = reactive({
   name: [{ required: true, message: '菜单名称不能为空', trigger: 'blur' }],
   sort: [{ required: true, message: '菜单顺序不能为空', trigger: 'blur' }],
   path: [{ required: true, message: '路由地址不能为空', trigger: 'blur' }],
-  status: [{ required: true, message: '状态不能为空', trigger: 'blur' }]
+  state: [{ required: true, message: '状态不能为空', trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 
@@ -238,7 +238,7 @@ const resetForm = () => {
     icon: '',
     component: '',
     componentName: '',
-    status: CommonStatusEnum.ENABLE,
+    state: CommonStatusEnum.ENABLE,
     visible: true,
     keepAlive: true,
     alwaysShow: true

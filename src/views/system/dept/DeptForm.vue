@@ -40,10 +40,10 @@
       <el-form-item label="邮箱" prop="email">
         <el-input v-model="formData.email" placeholder="请输入邮箱" maxlength="50" />
       </el-form-item>
-      <el-form-item label="状态" prop="status">
-        <el-select v-model="formData.status" placeholder="请选择状态" clearable>
+      <el-form-item label="状态" prop="state">
+        <el-select v-model="formData.state" placeholder="请选择状态" clearable>
           <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATE)"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -79,7 +79,7 @@ const formData = ref({
   leaderUserId: undefined,
   phone: undefined,
   email: undefined,
-  status: CommonStatusEnum.ENABLE
+  state: CommonStatusEnum.ENABLE
 })
 const formRules = reactive({
   parentId: [{ required: true, message: '上级部门不能为空', trigger: 'blur' }],
@@ -89,7 +89,7 @@ const formRules = reactive({
   phone: [
     { pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/, message: '请输入正确的手机号码', trigger: 'blur' }
   ],
-  status: [{ required: true, message: '状态不能为空', trigger: 'blur' }]
+  state: [{ required: true, message: '状态不能为空', trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
 const deptTree = ref() // 树形结构
@@ -154,7 +154,7 @@ const resetForm = () => {
     leaderUserId: undefined,
     phone: undefined,
     email: undefined,
-    status: CommonStatusEnum.ENABLE
+    state: CommonStatusEnum.ENABLE
   }
   formRef.value?.resetFields()
 }

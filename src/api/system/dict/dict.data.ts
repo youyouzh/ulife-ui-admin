@@ -6,7 +6,7 @@ export type DictDataVO = {
   label: string
   value: string
   dictType: string
-  status: number
+  state: number
   colorType: string
   cssClass: string
   remark: string

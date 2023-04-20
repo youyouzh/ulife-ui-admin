@@ -21,9 +21,9 @@
         </el-select>
       </el-form-item>
       <el-form-item label="启用状态">
-        <el-radio-group v-model="formData.status">
+        <el-radio-group v-model="formData.state">
           <el-radio
-            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATE)"
             :key="dict.value"
             :label="dict.value"
           >
@@ -65,7 +65,7 @@ const formData = ref({
   id: undefined,
   signature: '',
   code: '',
-  status: CommonStatusEnum.ENABLE,
+  state: CommonStatusEnum.ENABLE,
   remark: '',
   apiKey: '',
   apiSecret: '',
@@ -74,7 +74,7 @@ const formData = ref({
 const formRules = reactive({
   signature: [{ required: true, message: '短信签名不能为空', trigger: 'blur' }],
   code: [{ required: true, message: '渠道编码不能为空', trigger: 'blur' }],
-  status: [{ required: true, message: '启用状态不能为空', trigger: 'blur' }],
+  state: [{ required: true, message: '启用状态不能为空', trigger: 'blur' }],
   apiKey: [{ required: true, message: '短信 API 的账号不能为空', trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
@@ -130,7 +130,7 @@ const resetForm = () => {
     id: undefined,
     signature: '',
     code: '',
-    status: CommonStatusEnum.ENABLE,
+    state: CommonStatusEnum.ENABLE,
     remark: '',
     apiKey: '',
     apiSecret: '',

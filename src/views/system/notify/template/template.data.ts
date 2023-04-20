@@ -6,7 +6,7 @@ export const rules = reactive({
   code: [required],
   content: [required],
   type: [required],
-  status: [required]
+  state: [required]
 })
 
 // CrudSchema
@@ -56,8 +56,8 @@ const crudSchemas = reactive<VxeCrudSchema>({
     },
     {
       title: '状态',
-      field: 'status',
-      dictType: DICT_TYPE.COMMON_STATUS,
+      field: 'state',
+      dictType: DICT_TYPE.COMMON_STATE,
       dictClass: 'number',
       isSearch: true
     },

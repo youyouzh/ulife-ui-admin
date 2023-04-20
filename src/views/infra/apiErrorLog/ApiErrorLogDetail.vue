@@ -42,7 +42,7 @@
       </el-descriptions-item>
       <el-descriptions-item label="处理状态">
         <dict-tag
-          :type="DICT_TYPE.INFRA_API_ERROR_LOG_PROCESS_STATUS"
+          :type="DICT_TYPE.INFRA_API_ERROR_LOG_PROCESS_STATE"
           :value="detailData.processStatus"
         />
       </el-descriptions-item>

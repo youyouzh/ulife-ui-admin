@@ -20,15 +20,15 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="状态" prop="status">
+      <el-form-item label="状态" prop="state">
         <el-select
-          v-model="queryParams.status"
+          v-model="queryParams.state"
           placeholder="请选择菜单状态"
           clearable
           class="!w-240px"
         >
           <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATE)"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -72,9 +72,9 @@
       <el-table-column prop="permission" label="权限标识" :show-overflow-tooltip="true" />
       <el-table-column prop="component" label="组件路径" :show-overflow-tooltip="true" />
       <el-table-column prop="componentName" label="组件名称" :show-overflow-tooltip="true" />
-      <el-table-column prop="status" label="状态" width="80">
+      <el-table-column prop="state" label="状态" width="80">
         <template #default="scope">
-          <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
+          <dict-tag :type="DICT_TYPE.COMMON_STATE" :value="scope.row.state" />
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center">
@@ -123,7 +123,7 @@ const loading = ref(true) // 列表的加载中
 const list = ref<any>([]) // 列表的数据
 const queryParams = reactive({
   name: undefined,
-  status: undefined
+  state: undefined
 })
 const queryFormRef = ref() // 搜索的表单
 const isExpandAll = ref(false) // 是否展开，默认全部折叠

@@ -5,7 +5,7 @@ export interface NoticeVO {
   title: string
   type: number
   content: string
-  status: number
+  state: number
   remark: string
   creator: string
   createTime: Date

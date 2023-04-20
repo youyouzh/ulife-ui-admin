@@ -3,7 +3,7 @@ import request from '@/config/axios'
 export interface SmsTemplateVO {
   id: number | null
   type: number | null
-  status: number
+  state: number
   code: string
   name: string
   content: string

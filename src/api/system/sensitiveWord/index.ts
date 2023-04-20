@@ -4,7 +4,7 @@ import qs from 'qs'
 export interface SensitiveWordVO {
   id: number
   name: string
-  status: number
+  state: number
   description: string
   tags: string[]
   createTime: Date

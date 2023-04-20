@@ -5,7 +5,7 @@ export interface PostVO {
   name: string
   code: string
   sort: number
-  status: number
+  state: number
   remark: string
   createTime?: Date
 }

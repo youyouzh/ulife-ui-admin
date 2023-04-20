@@ -49,7 +49,7 @@ export default {
     delNoData: '请选择需要删除的数据',
     delSuccess: '删除成功',
     index: '序号',
-    status: '状态',
+    state: '状态',
     createTime: '创建时间',
     updateTime: '更新时间',
     copy: '复制',

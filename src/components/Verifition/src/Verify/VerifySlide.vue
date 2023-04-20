@@ -156,7 +156,7 @@ let secretKey = ref(''), //后端返回的ase加密秘钥
   leftBarBorderColor = ref('#ddd'),
   iconColor = ref(undefined),
   iconClass = ref('icon-right'),
-  status = ref(false), //鼠标状态
+  state = ref(false), //鼠标状态
   isEnd = ref(false), //是够验证完成
   showRefresh = ref(true),
   transitionLeft = ref(''),
@@ -240,13 +240,13 @@ const start = (e) => {
     leftBarBorderColor.value = '#337AB7'
     iconColor.value = '#fff'
     e.stopPropagation()
-    status.value = true
+    state.value = true
   }
 }
 //鼠标移动
 const move = (e) => {
   e = e || window.event
-  if (status.value && isEnd.value == false) {
+  if (state.value && isEnd.value == false) {
     if (!e.touches) {
       //兼容PC端
       var x = e.clientX
@@ -276,7 +276,7 @@ const move = (e) => {
 const end = () => {
   endMovetime.value = +new Date()
   //判断是否重合
-  if (status.value && isEnd.value == false) {
+  if (state.value && isEnd.value == false) {
     var moveLeftDistance = parseInt((moveBlockLeft.value || '').replace('px', ''))
     moveLeftDistance = (moveLeftDistance * 310) / parseInt(setSize.imgWidth)
     let data = {
@@ -330,7 +330,7 @@ const end = () => {
         }, 1000)
       }
     })
-    status.value = false
+    state.value = false
   }
 }
 

@@ -10,7 +10,7 @@ export interface JobLogVO {
   beginTime: string
   endTime: string
   duration: string
-  status: number
+  state: number
   createTime: string
 }
 

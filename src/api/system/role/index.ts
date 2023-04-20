@@ -5,7 +5,7 @@ export interface RoleVO {
   name: string
   code: string
   sort: number
-  status: number
+  state: number
   type: number
   dataScope: number
   dataScopeDeptIds: number[]
@@ -14,7 +14,7 @@ export interface RoleVO {
 
 export interface UpdateStatusReqVO {
   id: number
-  status: number
+  state: number
 }
 
 // 查询角色列表
@@ -44,7 +44,7 @@ export const updateRole = async (data: RoleVO) => {
 
 // 修改角色状态
 export const updateRoleStatus = async (data: UpdateStatusReqVO) => {
-  return await request.put({ url: '/system/role/update-status', data })
+  return await request.put({ url: '/system/role/update-state', data })
 }
 
 // 删除角色

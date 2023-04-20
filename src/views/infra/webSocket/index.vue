@@ -8,7 +8,7 @@
       </template>
       <div class="flex items-center">
         <span class="text-lg font-medium mr-4"> 连接状态: </span>
-        <el-tag :color="getTagColor">{{ status }}</el-tag>
+        <el-tag :color="getTagColor">{{ state }}</el-tag>
       </div>
       <hr class="my-4" />
 
@@ -74,7 +74,7 @@ const state = reactive({
   recordList: [] as { id: number; time: number; res: string }[]
 })
 
-const { status, data, send, close, open } = useWebSocket(server.value, {
+const { state, data, send, close, open } = useWebSocket(server.value, {
   autoReconnect: false,
   heartbeat: true
 })
@@ -94,7 +94,7 @@ watchEffect(() => {
   }
 })
 
-const getIsOpen = computed(() => status.value === 'OPEN')
+const getIsOpen = computed(() => state.value === 'OPEN')
 const getTagColor = computed(() => (getIsOpen.value ? 'success' : 'red'))
 
 const getList = computed(() => {

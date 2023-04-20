@@ -17,10 +17,10 @@
           placeholder="请输入参数名称"
         />
       </el-form-item>
-      <el-form-item label="状态" prop="status">
-        <el-radio-group v-model="formData.status">
+      <el-form-item label="状态" prop="state">
+        <el-radio-group v-model="formData.state">
           <el-radio
-            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATE)"
             :key="dict.value"
             :label="dict.value"
           >
@@ -53,7 +53,7 @@ const formData = ref({
   id: undefined,
   name: '',
   type: '',
-  status: CommonStatusEnum.ENABLE,
+  state: CommonStatusEnum.ENABLE,
   remark: ''
 })
 const formRules = reactive({
@@ -112,7 +112,7 @@ const resetForm = () => {
     id: undefined,
     type: '',
     name: '',
-    status: CommonStatusEnum.ENABLE,
+    state: CommonStatusEnum.ENABLE,
     remark: ''
   }
   formRef.value?.resetFields()

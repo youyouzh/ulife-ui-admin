@@ -49,7 +49,7 @@ export default {
     delNoData: 'Please select the data to delete',
     delSuccess: 'Deleted successfully',
     index: 'Index',
-    status: 'Status',
+    state: 'Status',
     createTime: 'Create Time',
     updateTime: 'Update Time',
     copy: 'Copy',

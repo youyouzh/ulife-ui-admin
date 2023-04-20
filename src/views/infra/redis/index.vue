@@ -36,7 +36,7 @@
               {{ cache?.info?.aof_enabled == '0' ? '否' : '是' }}
             </el-descriptions-item>
             <el-descriptions-item label="RDB是否成功 :">
-              {{ cache?.info?.rdb_last_bgsave_status }}
+              {{ cache?.info?.rdb_last_bgsave_state }}
             </el-descriptions-item>
             <el-descriptions-item label="Key数量 :">
               {{ cache?.dbSize }}

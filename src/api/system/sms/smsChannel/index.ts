@@ -3,7 +3,7 @@ import request from '@/config/axios'
 export interface SmsChannelVO {
   id: number
   code: string
-  status: number
+  state: number
   signature: string
   remark: string
   apiKey: string

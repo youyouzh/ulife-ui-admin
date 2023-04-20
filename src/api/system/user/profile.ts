@@ -36,7 +36,7 @@ export interface ProfileVO {
   mobile: string
   sex: number
   avatar: string
-  status: number
+  state: number
   remark: string
   loginIp: string
   loginDate: Date

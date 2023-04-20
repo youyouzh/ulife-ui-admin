@@ -23,7 +23,7 @@
         {{ detailData.duration + ' 毫秒' }}
       </el-descriptions-item>
       <el-descriptions-item label="任务状态">
-        <dict-tag :type="DICT_TYPE.INFRA_JOB_LOG_STATUS" :value="detailData.status" />
+        <dict-tag :type="DICT_TYPE.INFRA_JOB_LOG_STATE" :value="detailData.state" />
       </el-descriptions-item>
       <el-descriptions-item label="执行结果">
         {{ detailData.duration + ' result' }}

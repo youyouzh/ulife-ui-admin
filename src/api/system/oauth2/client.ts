@@ -7,7 +7,7 @@ export interface OAuth2ClientVO {
   name: string
   logo: string
   description: string
-  status: number
+  state: number
   accessTokenValiditySeconds: number
   refreshTokenValiditySeconds: number
   redirectUris: string[]

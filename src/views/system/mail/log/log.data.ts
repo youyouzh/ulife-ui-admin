@@ -63,7 +63,7 @@ const crudSchemas = reactive<CrudSchema[]>([
   {
     label: '发送状态',
     field: 'sendStatus',
-    dictType: DICT_TYPE.SYSTEM_MAIL_SEND_STATUS,
+    dictType: DICT_TYPE.SYSTEM_MAIL_SEND_STATE,
     dictClass: 'string',
     isSearch: true
   },

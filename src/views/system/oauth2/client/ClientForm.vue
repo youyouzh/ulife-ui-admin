@@ -22,10 +22,10 @@
       <el-form-item label="应用描述">
         <el-input type="textarea" v-model="formData.description" placeholder="请输入应用名" />
       </el-form-item>
-      <el-form-item label="状态" prop="status">
-        <el-radio-group v-model="formData.status">
+      <el-form-item label="状态" prop="state">
+        <el-radio-group v-model="formData.state">
           <el-radio
-            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATE)"
             :key="dict.value"
             :label="dict.value"
           >
@@ -145,7 +145,7 @@
 </template>
 <script setup lang="ts">
 import { DICT_TYPE, getIntDictOptions } from '@/utils/dict'
-import { CommonStatusEnum } from '@/utils/constants'
+import { CommonStateEnum } from '@/utils/constants'
 import * as ClientApi from '@/api/system/oauth2/client'
 const { t } = useI18n() // 国际化
 const message = useMessage() // 消息弹窗
@@ -161,7 +161,7 @@ const formData = ref({
   name: undefined,
   logo: undefined,
   description: undefined,
-  status: CommonStatusEnum.ENABLE,
+  state: CommonStateEnum.ENABLE,
   accessTokenValiditySeconds: 30 * 60,
   refreshTokenValiditySeconds: 30 * 24 * 60,
   redirectUris: [],
@@ -177,7 +177,7 @@ const formRules = reactive({
   secret: [{ required: true, message: '客户端密钥不能为空', trigger: 'blur' }],
   name: [{ required: true, message: '应用名不能为空', trigger: 'blur' }],
   logo: [{ required: true, message: '应用图标不能为空', trigger: 'blur' }],
-  status: [{ required: true, message: '状态不能为空', trigger: 'blur' }],
+  state: [{ required: true, message: '状态不能为空', trigger: 'blur' }],
   accessTokenValiditySeconds: [
     { required: true, message: '访问令牌的有效期不能为空', trigger: 'blur' }
   ],
@@ -242,7 +242,7 @@ const resetForm = () => {
     name: undefined,
     logo: undefined,
     description: undefined,
-    status: CommonStatusEnum.ENABLE,
+    state: CommonStateEnum.ENABLE,
     accessTokenValiditySeconds: 30 * 60,
     refreshTokenValiditySeconds: 30 * 24 * 60,
     redirectUris: [],

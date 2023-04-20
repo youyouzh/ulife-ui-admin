@@ -14,7 +14,7 @@ export const rules = reactive({
   label: [required],
   content: [required],
   params: [required],
-  status: [required]
+  state: [required]
 })
 
 // CrudSchema：https://doc.iocoder.cn/vue3/crud-schema/
@@ -79,9 +79,9 @@ const crudSchemas = reactive<CrudSchema[]>([
   },
   {
     label: '开启状态',
-    field: 'status',
+    field: 'state',
     isSearch: true,
-    dictType: DICT_TYPE.COMMON_STATUS,
+    dictType: DICT_TYPE.COMMON_STATE,
     dictClass: 'number'
   },
   {

@@ -3,7 +3,7 @@ import request from '@/config/axios'
 export interface JobVO {
   id: number
   name: string
-  status: number
+  state: number
   handlerName: string
   handlerParam: string
   cronExpression: string
@@ -44,12 +44,12 @@ export const exportJob = (params) => {
 }
 
 // 任务状态修改
-export const updateJobStatus = (id: number, status: number) => {
+export const updateJobStatus = (id: number, state: number) => {
   const params = {
     id,
-    status
+    state
   }
-  return request.put({ url: '/infra/job/update-status', params })
+  return request.put({ url: '/infra/job/update-state', params })
 }
 
 // 定时任务立即执行一次

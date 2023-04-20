@@ -32,7 +32,7 @@
         {{ formatDate(detailData.createTime) }}
       </el-descriptions-item>
       <el-descriptions-item label="发送状态">
-        <dict-tag :type="DICT_TYPE.SYSTEM_SMS_SEND_STATUS" :value="detailData.sendStatus" />
+        <dict-tag :type="DICT_TYPE.SYSTEM_SMS_SEND_STATE" :value="detailData.sendStatus" />
       </el-descriptions-item>
       <el-descriptions-item label="发送时间">
         {{ formatDate(detailData.sendTime) }}
@@ -50,7 +50,7 @@
         {{ detailData.apiRequestId }}
       </el-descriptions-item>
       <el-descriptions-item label="API 接收状态">
-        <dict-tag :type="DICT_TYPE.SYSTEM_SMS_RECEIVE_STATUS" :value="detailData.receiveStatus" />
+        <dict-tag :type="DICT_TYPE.SYSTEM_SMS_RECEIVE_STATE" :value="detailData.receiveStatus" />
         {{ formatDate(detailData.receiveTime) }}
       </el-descriptions-item>
       <el-descriptions-item label="API 接收结果">

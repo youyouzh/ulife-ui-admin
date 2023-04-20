@@ -21,15 +21,15 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="任务状态" prop="status">
+      <el-form-item label="任务状态" prop="state">
         <el-select
-          v-model="queryParams.status"
+          v-model="queryParams.state"
           placeholder="请选择任务状态"
           clearable
           class="!w-240px"
         >
           <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.INFRA_JOB_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.INFRA_JOB_STATE)"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -77,9 +77,9 @@
     <el-table v-loading="loading" :data="list">
       <el-table-column label="任务编号" align="center" prop="id" />
       <el-table-column label="任务名称" align="center" prop="name" />
-      <el-table-column label="任务状态" align="center" prop="status">
+      <el-table-column label="任务状态" align="center" prop="state">
         <template #default="scope">
-          <dict-tag :type="DICT_TYPE.INFRA_JOB_STATUS" :value="scope.row.status" />
+          <dict-tag :type="DICT_TYPE.INFRA_JOB_STATE" :value="scope.row.state" />
         </template>
       </el-table-column>
       <el-table-column label="处理器的名字" align="center" prop="handlerName" />
@@ -101,7 +101,7 @@
             @click="handleChangeStatus(scope.row)"
             v-hasPermi="['infra:job:update']"
           >
-            {{ scope.row.status === InfraJobStatusEnum.STOP ? '开启' : '暂停' }}
+            {{ scope.row.state === InfraJobStatusEnum.STOP ? '开启' : '暂停' }}
           </el-button>
           <el-button
             type="danger"
@@ -166,7 +166,7 @@ const queryParams = reactive({
   pageNo: 1,
   pageSize: 10,
   name: undefined,
-  status: undefined,
+  state: undefined,
   handlerName: undefined
 })
 const queryFormRef = ref() // 搜索的表单
@@ -221,21 +221,21 @@ const openForm = (type: string, id?: number) => {
 const handleChangeStatus = async (row: JobApi.JobVO) => {
   try {
     // 修改状态的二次确认
-    const text = row.status === InfraJobStatusEnum.STOP ? '开启' : '关闭'
+    const text = row.state === InfraJobStatusEnum.STOP ? '开启' : '关闭'
     await message.confirm(
       '确认要' + text + '定时任务编号为"' + row.id + '"的数据项?',
       t('common.reminder')
     )
-    const status =
-      row.status === InfraJobStatusEnum.STOP ? InfraJobStatusEnum.NORMAL : InfraJobStatusEnum.STOP
-    await JobApi.updateJobStatus(row.id, status)
+    const state =
+      row.state === InfraJobStatusEnum.STOP ? InfraJobStatusEnum.NORMAL : InfraJobStatusEnum.STOP
+    await JobApi.updateJobStatus(row.id, state)
     message.success(text + '成功')
     // 刷新列表
     await getList()
   } catch {
     // 取消后，进行恢复按钮
-    row.status =
-      row.status === InfraJobStatusEnum.NORMAL ? InfraJobStatusEnum.STOP : InfraJobStatusEnum.NORMAL
+    row.state =
+      row.state === InfraJobStatusEnum.NORMAL ? InfraJobStatusEnum.STOP : InfraJobStatusEnum.NORMAL
   }
 }
 

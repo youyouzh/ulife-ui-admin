@@ -7,14 +7,14 @@ export interface NotifyTemplateVO {
   content: string
   type: number
   params: string
-  status: number
+  state: number
   remark: string
 }
 
 export interface NotifyTemplatePageReqVO extends PageParam {
   name?: string
   code?: string
-  status?: number
+  state?: number
   createTime?: Date[]
 }
 

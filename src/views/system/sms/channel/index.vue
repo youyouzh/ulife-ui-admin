@@ -17,10 +17,10 @@
           @keyup.enter="handleQuery"
         />
       </el-form-item>
-      <el-form-item label="启用状态" prop="status">
-        <el-select v-model="queryParams.status" placeholder="请选择启用状态" clearable>
+      <el-form-item label="启用状态" prop="state">
+        <el-select v-model="queryParams.state" placeholder="请选择启用状态" clearable>
           <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATE)"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -62,9 +62,9 @@
           <dict-tag :type="DICT_TYPE.SYSTEM_SMS_CHANNEL_CODE" :value="scope.row.code" />
         </template>
       </el-table-column>
-      <el-table-column label="启用状态" align="center" prop="status">
+      <el-table-column label="启用状态" align="center" prop="state">
         <template #default="scope">
-          <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
+          <dict-tag :type="DICT_TYPE.COMMON_STATE" :value="scope.row.state" />
         </template>
       </el-table-column>
       <el-table-column label="备注" align="center" prop="remark" :show-overflow-tooltip="true" />
@@ -145,7 +145,7 @@ const queryParams = reactive({
   pageNo: 1,
   pageSize: 10,
   signature: undefined,
-  status: undefined,
+  state: undefined,
   createTime: []
 })
 

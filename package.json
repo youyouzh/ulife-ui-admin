@@ -28,8 +28,6 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
-    "@form-create/designer": "^3.1.0",
-    "@form-create/element-ui": "^3.1.17",
     "@iconify/iconify": "^3.1.0",
     "@videojs-player/vue": "^1.0.0",
     "@vueup/vue-quill": "^1.1.1",
@@ -90,8 +88,6 @@
     "@vitejs/plugin-vue": "^4.1.0",
     "@vitejs/plugin-vue-jsx": "^3.0.1",
     "autoprefixer": "^10.4.14",
-    "bpmn-js": "^8.9.0",
-    "bpmn-js-properties-panel": "^0.46.0",
     "consola": "^2.15.3",
     "eslint": "^8.36.0",
     "eslint-config-prettier": "^8.8.0",

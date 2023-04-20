@@ -62,7 +62,7 @@
           class="!w-240px"
         >
           <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.INFRA_API_ERROR_LOG_PROCESS_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.INFRA_API_ERROR_LOG_PROCESS_STATE)"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -109,7 +109,7 @@
       <el-table-column label="处理状态" align="center" prop="processStatus">
         <template #default="scope">
           <dict-tag
-            :type="DICT_TYPE.INFRA_API_ERROR_LOG_PROCESS_STATUS"
+            :type="DICT_TYPE.INFRA_API_ERROR_LOG_PROCESS_STATE"
             :value="scope.row.processStatus"
           />
         </template>
@@ -129,7 +129,7 @@
             type="primary"
             v-if="scope.row.processStatus === InfraApiErrorLogProcessStatusEnum.INIT"
             @click="handleProcess(scope.row.id, InfraApiErrorLogProcessStatusEnum.DONE)"
-            v-hasPermi="['infra:api-error-log:update-status']"
+            v-hasPermi="['infra:api-error-log:update-state']"
           >
             已处理
           </el-button>
@@ -138,7 +138,7 @@
             type="primary"
             v-if="scope.row.processStatus === InfraApiErrorLogProcessStatusEnum.INIT"
             @click="handleProcess(scope.row.id, InfraApiErrorLogProcessStatusEnum.IGNORE)"
-            v-hasPermi="['infra:api-error-log:update-status']"
+            v-hasPermi="['infra:api-error-log:update-state']"
           >
             已忽略
           </el-button>

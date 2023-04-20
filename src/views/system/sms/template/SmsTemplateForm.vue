@@ -39,10 +39,10 @@
       <el-form-item label="模板内容" prop="content">
         <el-input type="textarea" v-model="formData.content" placeholder="请输入模板内容" />
       </el-form-item>
-      <el-form-item label="开启状态" prop="status">
-        <el-radio-group v-model="formData.status">
+      <el-form-item label="开启状态" prop="state">
+        <el-radio-group v-model="formData.state">
           <el-radio
-            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATE)"
             :key="dict.value"
             :label="parseInt(dict.value as string)"
           >
@@ -78,7 +78,7 @@ const formType = ref('') // 表单的类型
 const formData = ref<SmsTemplateApi.SmsTemplateVO>({
   id: null,
   type: null,
-  status: CommonStatusEnum.ENABLE,
+  state: CommonStatusEnum.ENABLE,
   code: '',
   name: '',
   content: '',
@@ -88,7 +88,7 @@ const formData = ref<SmsTemplateApi.SmsTemplateVO>({
 })
 const formRules = reactive({
   type: [{ required: true, message: '短信类型不能为空', trigger: 'change' }],
-  status: [{ required: true, message: '开启状态不能为空', trigger: 'blur' }],
+  state: [{ required: true, message: '开启状态不能为空', trigger: 'blur' }],
   code: [{ required: true, message: '模板编码不能为空', trigger: 'blur' }],
   name: [{ required: true, message: '模板名称不能为空', trigger: 'blur' }],
   content: [{ required: true, message: '模板内容不能为空', trigger: 'blur' }],
@@ -147,7 +147,7 @@ const resetForm = () => {
   formData.value = {
     id: null,
     type: null,
-    status: CommonStatusEnum.ENABLE,
+    state: CommonStatusEnum.ENABLE,
     code: '',
     name: '',
     content: '',

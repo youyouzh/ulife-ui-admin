@@ -16,10 +16,10 @@
       <el-form-item label="岗位顺序" prop="sort">
         <el-input v-model="formData.sort" placeholder="请输入岗位顺序" />
       </el-form-item>
-      <el-form-item label="状态" prop="status">
-        <el-select v-model="formData.status" placeholder="请选择状态" clearable>
+      <el-form-item label="状态" prop="state">
+        <el-select v-model="formData.state" placeholder="请选择状态" clearable>
           <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATE)"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -53,13 +53,13 @@ const formData = ref({
   name: '',
   code: '',
   sort: 0,
-  status: CommonStatusEnum.ENABLE,
+  state: CommonStatusEnum.ENABLE,
   remark: ''
 })
 const formRules = reactive({
   name: [{ required: true, message: '岗位标题不能为空', trigger: 'blur' }],
   code: [{ required: true, message: '岗位编码不能为空', trigger: 'change' }],
-  status: [{ required: true, message: '岗位状态不能为空', trigger: 'change' }],
+  state: [{ required: true, message: '岗位状态不能为空', trigger: 'change' }],
   remark: [{ required: false, message: '岗位内容不能为空', trigger: 'blur' }]
 })
 const formRef = ref() // 表单 Ref
@@ -115,7 +115,7 @@ const resetForm = () => {
     name: '',
     code: '',
     sort: undefined,
-    status: CommonStatusEnum.ENABLE,
+    state: CommonStatusEnum.ENABLE,
     remark: ''
   }
   formRef.value?.resetFields()

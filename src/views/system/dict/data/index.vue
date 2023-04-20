@@ -26,10 +26,10 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="状态" prop="status">
-        <el-select v-model="queryParams.status" placeholder="数据状态" clearable class="!w-240px">
+      <el-form-item label="状态" prop="state">
+        <el-select v-model="queryParams.state" placeholder="数据状态" clearable class="!w-240px">
           <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATE)"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -67,9 +67,9 @@
       <el-table-column label="字典标签" align="center" prop="label" />
       <el-table-column label="字典键值" align="center" prop="value" />
       <el-table-column label="字典排序" align="center" prop="sort" />
-      <el-table-column label="状态" align="center" prop="status">
+      <el-table-column label="状态" align="center" prop="state">
         <template #default="scope">
-          <dict-tag :type="DICT_TYPE.COMMON_STATUS" :value="scope.row.status" />
+          <dict-tag :type="DICT_TYPE.COMMON_STATE" :value="scope.row.state" />
         </template>
       </el-table-column>
       <el-table-column label="颜色类型" align="center" prop="colorType" />
@@ -133,7 +133,7 @@ const queryParams = reactive({
   pageNo: 1,
   pageSize: 10,
   label: '',
-  status: undefined,
+  state: undefined,
   dictType: route.params.dictType
 })
 const queryFormRef = ref() // 搜索的表单

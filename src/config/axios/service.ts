@@ -202,7 +202,7 @@ service.interceptors.response.use(
       message = t('sys.api.errorMessage')
     } else if (message.includes('timeout')) {
       message = t('sys.api.apiTimeoutMessage')
-    } else if (message.includes('Request failed with status code')) {
+    } else if (message.includes('Request failed with state code')) {
       message = t('sys.api.apiRequestFailed') + message.substr(message.length - 3)
     }
     ElMessage.error(message)

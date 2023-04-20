@@ -42,15 +42,15 @@
           class="!w-240px"
         />
       </el-form-item>
-      <el-form-item label="任务状态" prop="status">
+      <el-form-item label="任务状态" prop="state">
         <el-select
-          v-model="queryParams.status"
+          v-model="queryParams.state"
           placeholder="请选择任务状态"
           clearable
           class="!w-240px"
         >
           <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.INFRA_JOB_LOG_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.INFRA_JOB_LOG_STATE)"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -91,9 +91,9 @@
           <span>{{ scope.row.duration + ' 毫秒' }}</span>
         </template>
       </el-table-column>
-      <el-table-column label="任务状态" align="center" prop="status">
+      <el-table-column label="任务状态" align="center" prop="state">
         <template #default="scope">
-          <dict-tag :type="DICT_TYPE.INFRA_JOB_LOG_STATUS" :value="scope.row.status" />
+          <dict-tag :type="DICT_TYPE.INFRA_JOB_LOG_STATE" :value="scope.row.state" />
         </template>
       </el-table-column>
       <el-table-column label="操作" align="center">
@@ -140,7 +140,7 @@ const queryParams = reactive({
   handlerName: undefined,
   beginTime: undefined,
   endTime: undefined,
-  status: undefined
+  state: undefined
 })
 const queryFormRef = ref() // 搜索的表单
 const exportLoading = ref(false) // 导出的加载中

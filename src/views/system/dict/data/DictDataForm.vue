@@ -23,10 +23,10 @@
       <el-form-item label="显示排序" prop="sort">
         <el-input-number v-model="formData.sort" controls-position="right" :min="0" />
       </el-form-item>
-      <el-form-item label="状态" prop="status">
-        <el-radio-group v-model="formData.status">
+      <el-form-item label="状态" prop="state">
+        <el-radio-group v-model="formData.state">
           <el-radio
-            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATE)"
             :key="dict.value"
             :label="dict.value"
           >
@@ -74,7 +74,7 @@ const formData = ref({
   label: '',
   value: '',
   dictType: '',
-  status: CommonStatusEnum.ENABLE,
+  state: CommonStatusEnum.ENABLE,
   colorType: '',
   cssClass: '',
   remark: ''
@@ -167,7 +167,7 @@ const resetForm = () => {
     label: '',
     value: '',
     dictType: '',
-    status: CommonStatusEnum.ENABLE,
+    state: CommonStatusEnum.ENABLE,
     colorType: '',
     cssClass: '',
     remark: ''

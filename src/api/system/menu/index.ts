@@ -11,7 +11,7 @@ export interface MenuVO {
   icon: string
   component: string
   componentName?: string
-  status: number
+  state: number
   visible: boolean
   keepAlive: boolean
   alwaysShow?: boolean

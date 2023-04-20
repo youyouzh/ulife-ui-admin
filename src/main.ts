@@ -16,9 +16,6 @@ import { setupGlobCom } from '@/components'
 // 引入 element-plus
 import { setupElementPlus } from '@/plugins/elementPlus'
 
-// 引入 form-create
-import { setupFormCreate } from '@/plugins/formCreate'
-
 // 引入全局样式
 import '@/styles/index.scss'
 
@@ -38,13 +35,6 @@ import App from './App.vue'
 import './permission'
 
 import { isDevMode } from '@/utils/env'
-
-import { MyPD } from '@/components/bpmnProcessDesigner/package/index.js'
-import '@/components/bpmnProcessDesigner/package/theme/index.scss'
-import 'bpmn-js/dist/assets/diagram-js.css'
-import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
-import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css'
-import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'
 
 import hljs from 'highlight.js' //导入代码高亮文件
 import 'highlight.js/styles/github.css' //导入代码高亮样式  新版

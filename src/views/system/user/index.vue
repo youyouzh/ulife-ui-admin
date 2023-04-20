@@ -38,15 +38,15 @@
               class="!w-240px"
             />
           </el-form-item>
-          <el-form-item label="状态" prop="status">
+          <el-form-item label="状态" prop="state">
             <el-select
-              v-model="queryParams.status"
+              v-model="queryParams.state"
               placeholder="用户状态"
               clearable
               class="!w-240px"
             >
               <el-option
-                v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATUS)"
+                v-for="dict in getIntDictOptions(DICT_TYPE.COMMON_STATE)"
                 :key="dict.value"
                 :label="dict.label"
                 :value="dict.value"
@@ -117,10 +117,10 @@
             :show-overflow-tooltip="true"
           />
           <el-table-column label="手机号码" align="center" prop="mobile" width="120" />
-          <el-table-column label="状态" key="status">
+          <el-table-column label="状态" key="state">
             <template #default="scope">
               <el-switch
-                v-model="scope.row.status"
+                v-model="scope.row.state"
                 :active-value="0"
                 :inactive-value="1"
                 @change="handleStatusChange(scope.row)"
@@ -220,7 +220,7 @@ const queryParams = reactive({
   pageSize: 10,
   username: undefined,
   mobile: undefined,
-  status: undefined,
+  state: undefined,
   deptId: undefined,
   createTime: []
 })
@@ -272,16 +272,16 @@ const handleImport = () => {
 const handleStatusChange = async (row: UserApi.UserVO) => {
   try {
     // 修改状态的二次确认
-    const text = row.status === CommonStatusEnum.ENABLE ? '启用' : '停用'
+    const text = row.state === CommonStatusEnum.ENABLE ? '启用' : '停用'
     await message.confirm('确认要"' + text + '""' + row.username + '"用户吗?')
     // 发起修改状态
-    await UserApi.updateUserStatus(row.id, row.status)
+    await UserApi.updateUserStatus(row.id, row.state)
     // 刷新列表
     await getList()
   } catch {
     // 取消后，进行恢复按钮
-    row.status =
-      row.status === CommonStatusEnum.ENABLE ? CommonStatusEnum.DISABLE : CommonStatusEnum.ENABLE
+    row.state =
+      row.state === CommonStatusEnum.ENABLE ? CommonStatusEnum.DISABLE : CommonStatusEnum.ENABLE
   }
 }
 

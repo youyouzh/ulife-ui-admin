@@ -54,7 +54,7 @@
           class="!w-240px"
         >
           <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_SMS_SEND_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_SMS_SEND_STATE)"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -79,7 +79,7 @@
           class="!w-240px"
         >
           <el-option
-            v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_SMS_RECEIVE_STATUS)"
+            v-for="dict in getIntDictOptions(DICT_TYPE.SYSTEM_SMS_RECEIVE_STATE)"
             :key="dict.value"
             :label="dict.label"
             :value="dict.value"
@@ -135,13 +135,13 @@
       <el-table-column label="短信内容" align="center" prop="templateContent" width="300" />
       <el-table-column label="发送状态" align="center" width="180">
         <template #default="scope">
-          <dict-tag :type="DICT_TYPE.SYSTEM_SMS_SEND_STATUS" :value="scope.row.sendStatus" />
+          <dict-tag :type="DICT_TYPE.SYSTEM_SMS_SEND_STATE" :value="scope.row.sendStatus" />
           <div>{{ formatDate(scope.row.sendTime) }}</div>
         </template>
       </el-table-column>
       <el-table-column label="接收状态" align="center" width="180">
         <template #default="scope">
-          <dict-tag :type="DICT_TYPE.SYSTEM_SMS_RECEIVE_STATUS" :value="scope.row.receiveStatus" />
+          <dict-tag :type="DICT_TYPE.SYSTEM_SMS_RECEIVE_STATE" :value="scope.row.receiveStatus" />
           <div>{{ formatDate(scope.row.receiveTime) }}</div>
         </template>
       </el-table-column>

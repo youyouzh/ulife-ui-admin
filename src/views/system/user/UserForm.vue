@@ -120,7 +120,7 @@ const formData = ref({
   sex: undefined,
   postIds: [],
   remark: '',
-  status: CommonStatusEnum.ENABLE,
+  state: CommonStatusEnum.ENABLE,
   roleIds: []
 })
 const formRules = reactive({
@@ -207,7 +207,7 @@ const resetForm = () => {
     sex: undefined,
     postIds: [],
     remark: '',
-    status: CommonStatusEnum.ENABLE,
+    state: CommonStatusEnum.ENABLE,
     roleIds: []
   }
   formRef.value?.resetFields()
